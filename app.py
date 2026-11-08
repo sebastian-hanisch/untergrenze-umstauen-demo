@@ -156,8 +156,8 @@ stat = cell_stats(rows)
 kind, text = verdict_validity(stat)
 getattr(st, kind)(text)
 st.plotly_chart(build_gap_histogram(gap_histogram(rows)), width="stretch", key="chart_gap")
-st.caption(f"Das Optimum liegt im Mittel bei {stat['opt_mean']:.2f} Hüben, die Untergrenze bei {stat['lb_mean']:.2f}; im Mittel ist das Optimum das {stat['ratio_mean']:.2f}-fache der Untergrenze "
-           f"(Buchten ohne blockierende Container zählen im Verhältnis nicht mit).")
+st.caption(f"Das Optimum liegt im Mittel bei {stat['opt_mean']:.2f} Hüben, die Untergrenze bei {stat['lb_mean']:.2f}; im Mittel über die Buchten ist das Optimum das {stat['ratio_mean']:.2f}-fache der Untergrenze "
+           f"(Mittel der Verhältnisse je Bucht, nicht das Verhältnis der Mittelwerte; Buchten ohne blockierende Container zählen im Verhältnis nicht mit).")
 kind, text = verdict_sample(stat)
 getattr(st, kind)(text)
 

@@ -29,7 +29,7 @@ Alle Zahlen sind Messungen an den festen Buchten 0 bis 99 je Einstellung (Python
 
 **Wie weit trägt die Untergrenze?** (volle Buchten, Platz 2; Beweisquote der engsten Passung: „bewiesen“ heißt, sie trifft die Untergrenze):
 
-| Stapel × Lagen | Optimum (Mittel) | Untergrenze (Mittel) | Optimum / Untergrenze | Lücke (Mittel / größte) | Untergrenze = Optimum | engste Passung: bewiesen optimal | optimal, nur mit Suche zu beweisen | verfehlt das Optimum |
+| Stapel × Lagen | Optimum (Mittel) | Untergrenze (Mittel) | Optimum / Untergrenze (Mittel der Verhältnisse je Bucht) | Lücke (Mittel / größte) | Untergrenze = Optimum | engste Passung: bewiesen optimal | optimal, nur mit Suche zu beweisen | verfehlt das Optimum |
 |---|---|---|---|---|---|---|---|---|
 | 3 × 2 | 1,74 | 1,41 | 1,24 | 0,33 / 1 | 67 | 67 | 31 | 2 |
 | 4 × 2 | 2,25 | 1,95 | 1,16 | 0,30 / 1 | 70 | 70 | 30 | 0 |
@@ -44,7 +44,7 @@ Alle Zahlen sind Messungen an den festen Buchten 0 bis 99 je Einstellung (Python
 | Frage | Befund |
 |---|---|
 | **Gilt die Untergrenze immer?** | In allen 900 Buchten der neun Einstellungen liegt sie nicht über dem Optimum. In den optimalen Folgen und in den Folgen der engsten Passung wird nie ein anfangs nicht blockierender Container bewegt (Satz 2). Die Tests prüfen das zusätzlich an allen optimalen Folgen aller 120 Buchten mit 3 Stapeln × 2 Lagen. |
-| **Woraus besteht die Lücke?** | Aus Mehrfachhüben (Folgerung). In der optimalen Folge braucht ein blockierender Container im Mittel 1,42 (3 × 3), 1,32 (4 × 3), 1,59 (3 × 4), 1,42 (4 × 4) und 1,32 Hübe (5 × 4); 41, 30, 51, 40 und 31 % der Blocker werden mehr als einmal bewegt; ein einzelner Container wird höchstens 3-mal bewegt (bei 3 × 4: 4-mal). |
+| **Woraus besteht die Lücke?** | Aus Mehrfachhüben (Folgerung). In der optimalen Folge kommen auf einen blockierenden Container im Mittel über die Buchten (Verhältnis Hübe zu Blockern je Bucht, gemittelt) 1,42 (3 × 3), 1,32 (4 × 3), 1,59 (3 × 4), 1,42 (4 × 4) und 1,32 Hübe (5 × 4); rund 41, 30, 51, 40 und 31 % der Blocker werden mehr als einmal bewegt (Mittel der Anteile je Bucht; die Zahlen gehören zu der gewählten von mehreren optimalen Folgen, bei anderer Wahl liegen sie bis zu 1,4 Punkte darunter); ein einzelner Container wird höchstens 3-mal bewegt (bei 3 × 4: 4-mal). |
 | **Wie hängt es von den Lagen ab?** | Bei 4 Stapeln trifft die Untergrenze das Optimum bei 2, 3 und 4 Lagen in 70, 20 und 4 von 100 Buchten; die mittlere Lücke wächst von 0,30 über 1,28 auf 3,00 Hübe. Bei 3 und 5 Stapeln fällt die Zahl ebenfalls mit den Lagen. |
 | **Wie hängt es vom Platz ab?** (4 Stapel, Platz 1 / 2 / 3 / 4) | 3 Lagen: Optimum 5,86 / 5,81 / 5,81 / 5,81, Lücke 1,33 / 1,28 / 1,28 / 1,28. 4 Lagen: Optimum 10,89 / 10,44 / 10,39 / 10,39, Lücke 3,45 / 3,00 / 2,95 / 2,95; engste Passung optimal in 47 / 52 / 53 / 53 von 100. Nur der knappste Platz (1) verändert das Bild, ab Platz 2 praktisch nichts. |
 | **Wie hängt es vom Füllgrad ab?** (Zufallsbuchten, 4 Stapel) | Höchsthöhe 5, 6 / 9 / 12 / 15 Container (30, 45, 60, 75 %): Lücke 0,05 / 0,50 / 1,29 / 2,74, Untergrenze = Optimum in 95 / 61 / 25 / 4 von 100. Höchsthöhe 6, 6 / 9 / 12 / 15 / 18 Container (25, 38, 50, 62, 75 %): Lücke 0,05 / 0,51 / 1,28 / 2,61 / 4,55, Untergrenze = Optimum in 95 / 60 / 29 / 9 / 2. Alle Buchten bewiesen. |
@@ -120,7 +120,7 @@ pip install -r requirements-dev.txt
 pytest tests/ -v
 ```
 
-125 Tests, rund zwei Minuten.
+125 Tests, rund drei Minuten.
 
 Gebaut mit Streamlit und Plotly.
 
