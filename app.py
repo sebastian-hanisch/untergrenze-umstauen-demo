@@ -77,9 +77,20 @@ st.markdown(
     """
 In einer **Bucht** werden Container in bekannter Reihenfolge abgerufen; wer über einem früher gebrauchten liegt, **blockiert** und muss auf einen anderen Stapel (jeder Hub kostet). Wie viele Hübe sind **mindestens** nötig? Eine Zahl, die man ohne jede Suche ablesen kann, ist die Zahl der blockierenden Container. Die Demo zeigt, **warum sie immer gilt**, **wie oft sie das Optimum trifft** (und damit Optimalität beweist) und **woraus die Lücke besteht**, wenn sie es nicht tut.
 
-Weiter unten: die Abschnitte **🔬 Experiment** (gilt sie immer, wie weit trägt sie, Beweisquote, Lagen und Füllgrad, der einzelne Blocker), **🚧 Wo die Annahmen enden** und der Expander **📐 Mathematische Formulierung**. Dies ist das zweite Stück der Reihe „Umstauen: Untergrenze und Suche“; das erste ([Zielstapel wählen](https://sebastianhanisch-umstauen-regeln-demo.streamlit.app/)) vergleicht drei Regeln mit dem Optimum.
+Wer zuerst ohne Fachbegriffe verstehen will, worum es geht, öffnet „💬 In einfachen Worten“. Weiter unten: die Abschnitte **🔬 Experiment** (gilt sie immer, wie weit trägt sie, Beweisquote, Lagen und Füllgrad, der einzelne Blocker), **🚧 Wo die Annahmen enden** und der Expander **📐 Mathematische Formulierung**. Dies ist das zweite Stück der Reihe „Umstauen: Untergrenze und Suche“; das erste ([Zielstapel wählen](https://sebastianhanisch-umstauen-regeln-demo.streamlit.app/)) vergleicht drei Regeln mit dem Optimum.
 """
 )
+
+# erklaerseite:einfach:start (erzeugt von tools/set_demo_explainer.py (Website-Repo) aus tools/content/explainers/untergrenze-umstauen-erklaert.json, nicht von Hand ändern)
+with st.expander("💬 In einfachen Worten"):
+    st.markdown(
+        """
+Container stehen auf einem Platz in Stapeln und werden in bekannter Reihenfolge abgeholt. Liegt der gesuchte nicht oben, müssen die darüber auf andere Stapel gesetzt werden. Ohne zu planen, kann man eine Mindestzahl ablesen: Jeder Container, der über einem früher gebrauchten liegt, muss mindestens einmal bewegt werden. Oft braucht man mehr, denn ein umgesetzter Container kann auf dem neuen Stapel wieder über einem früheren liegen. Die Demo zeigt, warum die Mindestzahl gilt, wie oft sie schon die beste Lösung ist und woraus die Lücke besteht, wenn sie es nicht ist. Die Plätze sind zufällig erzeugt, gemessen wurde nichts an einem echten Terminal.
+
+[Ausführlich und verständlich erklärt, mit Fachteil](https://sebastianhanisch.net/untergrenze-umstauen-erklaert.html)
+        """
+    )
+# erklaerseite:einfach:end
 
 with st.expander("So funktioniert die Untergrenze", expanded=True):
     st.markdown(
@@ -216,6 +227,25 @@ st.markdown(
 st.markdown("---")
 
 with st.expander("📐 Mathematische Formulierung"):
+    # erklaerseite:lesehilfe:start (erzeugt von tools/set_demo_explainer.py (Website-Repo) aus tools/content/explainers/untergrenze-umstauen-erklaert.json, nicht von Hand ändern)
+    st.markdown(
+        r"""
+**Lesehilfe.** Gegeben ist eine Bucht aus Stapeln mit einer Höchsthöhe, deren Container Abrufnummern tragen (kleiner = früher). Gesucht ist die kleinste Zahl von Hüben, die die Bucht leert, und wie weit sie über der Untergrenze liegt, die man durch Zählen der blockierenden Container erhält.
+
+| Symbol | Bedeutung |
+|---|---|
+| $s$, $H$ | Zahl der Stapel und Höchsthöhe eines Stapels |
+| $N$ | Zahl der Container; die Abrufnummern sind $1, \dots, N$ (1 wird zuerst abgerufen) |
+| $c$ | ein einzelner Container (bzw. seine Abrufnummer) |
+| $B$ | Menge der anfangs blockierenden Container (liegen über einer kleineren Nummer im selben Stapel) |
+| $L = \lvert B \rvert$ | Untergrenze: Zahl der blockierenden Container |
+| $h_c$ | Zahl der Hübe, die der Container $c$ in einer Hubfolge erfährt (für $c \in B$ mindestens 1) |
+| $\text{OPT}$ | kleinste mögliche Zahl von Hüben (Optimum) |
+
+[Schritt für Schritt erklärt, mit Herleitung und Literatur](https://sebastianhanisch.net/untergrenze-umstauen-erklaert.html#fachleute)
+        """
+    )
+    # erklaerseite:lesehilfe:end
     st.markdown(
         r"""
 **Gegeben:** eine Bucht aus $s$ Stapeln der Höchsthöhe $H$, die Container tragen die Abrufnummern $1, \dots, N$ (kleiner = früher). Ein Hub setzt den obersten Container eines Stapels auf einen anderen Stapel mit Platz; im *restricted* Modell werden nur Container über der nächsten abzurufenden Nummer bewegt, die nächste Nummer wird entnommen, sobald sie oben liegt.
